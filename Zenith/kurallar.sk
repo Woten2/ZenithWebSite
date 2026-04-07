@@ -1,0 +1,41 @@
+# ==========================================
+# KURALLAR GUI SKRIPTİ
+# ==========================================
+# İsterseniz Bunları Değiştirebilirsiniz:
+# (SUNUCU İSMİ)'ni kendiniz yapacaksınız.
+# (KURAL) içine de kurallarınızı siz yazacaksınız.
+# İstemediğiniz kural satırlarını (set slot...) silebilirsiniz.
+# ==========================================
+
+command /kurallar:
+    trigger:
+        # Menüyü oluşturuyoruz (3 satırlık bir sandık: 27 slot)
+        set {_gui} to a new chest inventory with 3 row with name "&6&lZenith &8- &eKurallar"
+        
+        # Sunucu İsmi ve Karşılama (En üst orta slot)
+        set slot 4 of {_gui} to book named "&e(SUNUCU İSMİ)" with lore "&aSunucumuza Hoşgeldin!", "&7Kuralları aşağıdan inceleyebilirsin."
+        
+        # Kurallar (İstemediklerini silebilirsin)
+        set slot 10 of {_gui} to paper named "&6Kural 1" with lore "&f(KURAL)"
+        set slot 11 of {_gui} to paper named "&6Kural 2" with lore "&f(KURAL)"
+        set slot 12 of {_gui} to paper named "&6Kural 3" with lore "&f(KURAL)"
+        set slot 13 of {_gui} to paper named "&6Kural 4" with lore "&f(KURAL)"
+        set slot 14 of {_gui} to paper named "&6Kural 5" with lore "&f(KURAL)"
+        set slot 15 of {_gui} to paper named "&6Kural 6" with lore "&f(KURAL)"
+        set slot 16 of {_gui} to paper named "&6Kural 7" with lore "&f(KURAL)"
+        set slot 19 of {_gui} to paper named "&6Kural 8" with lore "&f(KURAL)"
+        set slot 20 of {_gui} to paper named "&6Kural 9" with lore "&f(KURAL)"
+        set slot 21 of {_gui} to paper named "&6Kural 10" with lore "&f(KURAL)"
+        
+        # Kapatma Butonu
+        set slot 26 of {_gui} to barrier named "&cKapat"
+        
+        # Menüyü oyuncuya aç
+        open {_gui} to player
+
+# Menüden eşya alınmasını engelleme
+on inventory click:
+    if name of event-inventory is "&6&lZenith &8- &eKurallar":
+        cancel event
+        if index of event-slot is 26:
+            close player's inventory

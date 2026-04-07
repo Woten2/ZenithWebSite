@@ -1,0 +1,5 @@
+command /duyuru <text>:
+    trigger:
+        broadcast "&c[DUYURU] &c%arg-1%"
+        send title "&cDUYURU" with subtitle "&c%arg-1%" to all players
+        play sound "entity.experience_orb.pickup" at all players
